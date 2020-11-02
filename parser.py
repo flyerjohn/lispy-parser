@@ -71,7 +71,7 @@ class LispyTransformer(InlineTransformer):
         array = list(args)
         array.insert(0, Symbol('begin'))
         return array
-        
+
     def char(self, token):
         token = token.split('#\\')[-1]
         return token if token.lower() not in self.CHARS else self.CHARS[token.lower()]
