@@ -45,3 +45,24 @@ class LispyTransformer(InlineTransformer):
         "space": " ",
         "tab": "\t",
     }
+
+    def string(self, token):
+        return eval(token)
+
+    def num(self, token):
+        return float(token)
+    
+    def bool(self, token):
+        return True if token.value == "#t" else False
+
+    def name(self, token):
+        return Symbol(token)
+
+    def symbol(self, token):
+        return Symbol(token)
+
+    def quoted(self, token):
+        return [Symbol('quote'), token]
+
+    def lista(self, *args):
+        return list(args)
